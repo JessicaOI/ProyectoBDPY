@@ -25,7 +25,7 @@ def login():
             return redirect('/welcome')
     return render_template('login.html')
 
-@app.route('/signup', methods=['GET', 'POST'])
+@app.route('/signup2', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
         username = request.form['username']
