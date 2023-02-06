@@ -32,7 +32,7 @@ def signup():
         password = request.form['password']
         collection.insert_one({'username': username, 'password': password})
         return redirect('/login')
-    return render_template('signup.html')
+    return render_template('signup2.html')
 
 @app.route('/welcome')
 def welcome():
