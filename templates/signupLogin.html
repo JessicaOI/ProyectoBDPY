@@ -12,15 +12,15 @@
     <header> 
         <div class="logo"><strong>facebook</strong></div>
         <div class="login">
-            <form>
+            <form action="/login" method="post">
                 <div class="box1">
                     <span><strong>Email or Phone</strong></span><br>
-                    <input type="text" placeholder="Email address or phone number"><br>
+                    <input type="text" name="usernameLogin" placeholder="Email address or phone number"><br>
                     <input type="checkbox"> Keep me logged in
                 </div>
                 <div class="box2">
                     <span><strong>Password</strong></span><br>
-                    <input type="text" placeholder="Password"><br>
+                    <input type="text" name="passwordLogin" placeholder="Password"><br>
                     <a href="#"> <span>Forgot your password?</span></a>
                 </div>
                 <div class="firstbutton">
@@ -49,7 +49,7 @@
                 <h1>Sign Up</h1>
                 It's free and always will be
                 <br><br>
-                <form action="/signup2" method="post">
+                <form action="/" method="post">
                 <input type="text" placeholder="First name">
                 <input type="text" placeholder="Last name">
                 <br>

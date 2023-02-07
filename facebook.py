@@ -8,31 +8,29 @@ client = MongoClient("mongodb://localhost:27017/")
 db = client["mydatabase"]
 collection = db["users"]
 
-@app.route('/')
-def index():
-    if 'username' in session:
-        return redirect('/welcome')
-    return render_template('index.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        user = collection.find_one({'username': username})
-        if user and user['password'] == password:
-            session['username'] = username
+        username = request.form['usernameLogin']
+        password = request.form['passwordLogin']
+        user = collection.find_one({'usernameLogin': username})
+        if user and user['passwordLogin'] == password:
+            session['usernameLogin'] = username
             return redirect('/welcome')
-    return render_template('login.html')
+    return render_template('signupLogin.html')
 
-@app.route('/signup2', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def signup():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        collection.insert_one({'username': username, 'password': password})
-        return redirect('/login')
-    return render_template('signup2.html')
+    if 'username' in session:
+        return redirect('/welcome')
+    else:
+        if request.method == 'POST':
+            username = request.form['username']
+            password = request.form['password']
+            collection.insert_one({'username': username, 'password': password})
+            return redirect('/login')
+    return render_template('signupLogin.html')
 
 @app.route('/welcome')
 def welcome():
