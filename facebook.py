@@ -14,9 +14,10 @@ def login():
     if request.method == 'POST':
         username = request.form['usernameLogin']
         password = request.form['passwordLogin']
-        user = collection.find_one({'usernameLogin': username})
-        if user and user['passwordLogin'] == password:
-            session['usernameLogin'] = username
+        print(username,password)
+        user = collection.find_one({'username': username})
+        if user and user['password'] == password:
+            session['username'] = username
             return redirect('/welcome')
     return render_template('signupLogin.html')
 
