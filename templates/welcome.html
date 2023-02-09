@@ -297,7 +297,7 @@
             <!-- POST FORM -->
             <div class="px-4 mt-4 shadow rounded-lg bg-white dark:bg-dark-second">
                 <div class="p-2 border-b border-gray-300 dark:border-dark-third flex space-x-4">
-                    <img src="./images/tuat.jpg" alt="Profile picture" class="w-10 h-10 rounded-full">
+                    <img src="{{ url_for('static', filename='./images/tuat.jpg') }}" alt="Profile picture" class="w-10 h-10 rounded-full">
                     <div class="flex-1 bg-gray-100 rounded-full flex items-center justify-start pl-4 cursor-pointer dark:bg-dark-third text-gray-500 text-lg dark:text-dark-txt">
                         <span>
                             What's on your mind, Tuat?
@@ -329,39 +329,39 @@
                         <span class="text-sm font-semibold text-blue-500">Create Room</span>
                     </div>
                     <div class="relative cursor-pointer">
-                        <img src="./images/avt-3.jpg" alt="Profile picture" class="rounded-full">
+                        <img src="{{ url_for('static', filename='./images/avt-3.jpg') }}"alt="Profile picture" class="rounded-full">
                         <span class="bg-green-500 w-3 h-3 rounded-full absolute right-0 top-3/4 border-white border-2"></span>
                     </div>
                     <div class="relative cursor-pointer">
-                        <img src="./images/avt-4.jpg" alt="Profile picture" class="rounded-full">
+                        <img src="{{ url_for('static', filename='./images/avt-4.jpg') }}" alt="Profile picture" class="rounded-full">
                         <span class="bg-green-500 w-3 h-3 rounded-full absolute right-0 top-3/4 border-white border-2"></span>
                     </div>
                     <div class="relative cursor-pointer">
-                        <img src="./images/avt-5.jpg" alt="Profile picture" class="rounded-full">
+                        <img src="{{ url_for('static', filename='./images/avt-5.jpg') }}" alt="Profile picture" class="rounded-full">
                         <span class="bg-green-500 w-3 h-3 rounded-full absolute right-0 top-3/4 border-white border-2"></span>
                     </div>
                     <div class="relative cursor-pointer">
-                        <img src="./images/avt-2.jpg" alt="Profile picture" class="rounded-full">
+                        <img src="{{ url_for('static', filename='./images/avt-2.jpg') }}" alt="Profile picture" class="rounded-full">
                         <span class="bg-green-500 w-3 h-3 rounded-full absolute right-0 top-3/4 border-white border-2"></span>
                     </div>
                     <div class="relative cursor-pointer hidden sm:inline">
-                        <img src="./images/avt-3.jpg" alt="Profile picture" class="rounded-full">
+                        <img src="{{ url_for('static', filename='./images/avt-3.jpg') }}" alt="Profile picture" class="rounded-full">
                         <span class="bg-green-500 w-3 h-3 rounded-full absolute right-0 top-3/4 border-white border-2"></span>
                     </div>
                     <div class="relative cursor-pointer hidden sm:inline">
-                        <img src="./images/avt-4.jpg" alt="Profile picture" class="rounded-full">
+                        <img src="{{ url_for('static', filename='./images/avt-4.jpg') }}" alt="Profile picture" class="rounded-full">
                         <span class="bg-green-500 w-3 h-3 rounded-full absolute right-0 top-3/4 border-white border-2"></span>
                     </div>
                     <div class="relative cursor-pointer hidden sm:inline">
-                        <img src="./images/avt-5.jpg" alt="Profile picture" class="rounded-full">
+                        <img src="{{ url_for('static', filename='./images/avt-5.jpg') }}" alt="Profile picture" class="rounded-full">
                         <span class="bg-green-500 w-3 h-3 rounded-full absolute right-0 top-3/4 border-white border-2"></span>
                     </div>
                     <div class="relative cursor-pointer hidden sm:inline">
-                        <img src="./images/avt-7.jpg" alt="Profile picture" class="rounded-full">
+                        <img src="{{ url_for('static', filename='./images/avt-7.jpg') }}" alt="Profile picture" class="rounded-full">
                         <span class="bg-green-500 w-3 h-3 rounded-full absolute right-0 top-3/4 border-white border-2"></span>
                     </div>
                     <div class="relative cursor-pointer hidden sm:inline">
-                        <img src="./images/avt-3.jpg" alt="Profile picture" class="rounded-full">
+                        <img src="{{ url_for('static', filename='./images/avt-3.jpg') }}" alt="Profile picture" class="rounded-full">
                         <span class="bg-green-500 w-3 h-3 rounded-full absolute right-0 top-3/4 border-white border-2"></span>
                     </div>
                     <div class="w-12 h-12 rounded-full hidden lg:grid place-items-center text-2xl text-gray-500 bg-white absolute right-0 top-1/2 transform -translate-y-1/2 border border-gray-200 cursor-pointer hover:bg-gray-100 shadow dark:bg-dark-third dark:border-dark-third dark:text-dark-txt">
@@ -381,7 +381,7 @@
                     <div class="flex items-center justify-between px-4 py-2">
                         <div class="flex space-x-2 items-center">
                             <div class="relative">
-                                <img src="./images/avt-2.jpg" alt="Profile picture" class="w-10 h-10 rounded-full">
+                                <img src="{{ url_for('static', filename='./images/avt-2.jpg') }}" alt="Profile picture" class="w-10 h-10 rounded-full">
                                 <span class="bg-green-500 w-3 h-3 rounded-full absolute right-0 top-3/4 border-white border-2"></span>
                             </div>
                             <div>
@@ -405,7 +405,7 @@
 
                     <!-- POST IMAGE -->
                     <div class="py-2">
-                        <img src="./images/post.png" alt="Post image">
+                        <img src="{{ url_for('static', filename='./images/post.png') }}" alt="Post image">
                     </div>
                     <!-- END POST IMAGE -->
 
@@ -457,7 +457,7 @@
                     <div class="py-2 px-4">
                         <!-- COMMENT -->
                         <div class="flex space-x-2">
-                            <img src="./images/avt-5.jpg" alt="Profile picture" class="w-9 h-9 rounded-full">
+                            <img src="{{ url_for('static', filename='./images/avt-5.jpg') }}" alt="Profile picture" class="w-9 h-9 rounded-full">
                             <div>
                                 <div class="bg-gray-100 dark:bg-dark-third p-2 rounded-2xl text-sm">
                                     <span class="font-semibold block">John Doe</span>
@@ -472,7 +472,7 @@
                                 </div>
                                 <!-- COMMENT -->
                                 <div class="flex space-x-2">
-                                    <img src="./images/avt-7.jpg" alt="Profile picture" class="w-9 h-9 rounded-full">
+                                    <img src="{{ url_for('static', filename='./images/avt-7.jpg') }}" alt="Profile picture" class="w-9 h-9 rounded-full">
                                     <div>
                                         <div class="bg-gray-100 dark:bg-dark-third p-2 rounded-2xl text-sm">
                                             <span class="font-semibold block">John Doe</span>
@@ -493,7 +493,7 @@
                         <!-- END COMMENT -->
                         <!-- COMMENT -->
                         <div class="flex space-x-2">
-                            <img src="./images/avt-5.jpg" alt="Profile picture" class="w-9 h-9 rounded-full">
+                            <img src="{{ url_for('static', filename='./images/avt-5.jpg') }}" alt="Profile picture" class="w-9 h-9 rounded-full">
                             <div>
                                 <div class="bg-gray-100 dark:bg-dark-third p-2 rounded-2xl text-sm">
                                     <span class="font-semibold block">John Doe</span>
@@ -508,7 +508,7 @@
                                 </div>
                                 <!-- COMMENT -->
                                 <div class="flex space-x-2">
-                                    <img src="./images/avt-7.jpg" alt="Profile picture" class="w-9 h-9 rounded-full">
+                                    <img src="{{ url_for('static', filename='./images/avt-7.jpg') }}" alt="Profile picture" class="w-9 h-9 rounded-full">
                                     <div>
                                         <div class="bg-gray-100 dark:bg-dark-third p-2 rounded-2xl text-sm">
                                             <span class="font-semibold block">John Doe</span>
@@ -533,7 +533,7 @@
                     <!-- COMMENT FORM -->
                     <div class="py-2 px-4">
                         <div class="flex space-x-2">
-                            <img src="./images/tuat.jpg" alt="Profile picture" class="w-9 h-9 rounded-full">
+                            <img src="{{ url_for('static', filename='./images/tuat.jpg') }}" alt="Profile picture" class="w-9 h-9 rounded-full">
                             <div class="flex-1 flex bg-gray-100 dark:bg-dark-third rounded-full items-center justify-between px-3">
                                 <input type="text" placeholder="Write a comment..." class="outline-none bg-transparent flex-1">
                                 <div class="flex space-x-0 items-center justify-center">
@@ -555,7 +555,7 @@
                     <div class="flex items-center justify-between px-4 py-2">
                         <div class="flex space-x-2 items-center">
                             <div class="relative">
-                                <img src="./images/avt-2.jpg" alt="Profile picture" class="w-10 h-10 rounded-full">
+                                <img src="{{ url_for('static', filename='./images/avt-2.jpg') }}" alt="Profile picture" class="w-10 h-10 rounded-full">
                                 <span class="bg-green-500 w-3 h-3 rounded-full absolute right-0 top-3/4 border-white border-2"></span>
                             </div>
                             <div>
@@ -580,10 +580,10 @@
                     <!-- POST IMAGE -->
                     <div class="py-2">
                         <div class="grid grid-cols-2 gap-1">
-                            <img src="./images/post-2 (1).jpg" alt="Post image">
-                            <img src="./images/post-2 (2).jpg" alt="Post image">
-                            <img src="./images/post-2 (3).jpg" alt="Post image">
-                            <img src="./images/post-2 (4).jpg" alt="Post image">
+                            <img src="{{ url_for('static', filename='./images/post-2 (1).jpg') }}" alt="Post image">
+                            <img src="{{ url_for('static', filename='./images/post-2 (2).jpg') }}" alt="Post image">
+                            <img src="{{ url_for('static', filename='./images/post-2 (3).jpg') }}" alt="Post image">
+                            <img src="{{ url_for('static', filename='./images/post-2 (4).jpg') }}" alt="Post image">
                         </div>
                     </div>
                     <!-- END POST IMAGE -->
@@ -636,7 +636,7 @@
                     <div class="py-2 px-4">
                         <!-- COMMENT -->
                         <div class="flex space-x-2">
-                            <img src="./images/avt-5.jpg" alt="Profile picture" class="w-9 h-9 rounded-full">
+                            <img src="{{ url_for('static', filename='./images/avt-5.jpg') }}" alt="Profile picture" class="w-9 h-9 rounded-full">
                             <div>
                                 <div class="bg-gray-100 dark:bg-dark-third p-2 rounded-2xl text-sm">
                                     <span class="font-semibold block">John Doe</span>
@@ -651,7 +651,7 @@
                                 </div>
                                 <!-- COMMENT -->
                                 <div class="flex space-x-2">
-                                    <img src="./images/avt-7.jpg" alt="Profile picture" class="w-9 h-9 rounded-full">
+                                    <img src="{{ url_for('static', filename='./images/avt-7.jpg') }}" alt="Profile picture" class="w-9 h-9 rounded-full">
                                     <div>
                                         <div class="bg-gray-100 dark:bg-dark-third p-2 rounded-2xl text-sm">
                                             <span class="font-semibold block">John Doe</span>
@@ -672,7 +672,7 @@
                         <!-- END COMMENT -->
                         <!-- COMMENT -->
                         <div class="flex space-x-2">
-                            <img src="./images/avt-5.jpg" alt="Profile picture" class="w-9 h-9 rounded-full">
+                            <img src="{{ url_for('static', filename='./images/avt-5.jpg') }}" alt="Profile picture" class="w-9 h-9 rounded-full">
                             <div>
                                 <div class="bg-gray-100 dark:bg-dark-third p-2 rounded-2xl text-sm">
                                     <span class="font-semibold block">John Doe</span>
@@ -687,7 +687,7 @@
                                 </div>
                                 <!-- COMMENT -->
                                 <div class="flex space-x-2">
-                                    <img src="./images/avt-7.jpg" alt="Profile picture" class="w-9 h-9 rounded-full">
+                                    <img src="{{ url_for('static', filename='./images/avt-7.jpg') }}" alt="Profile picture" class="w-9 h-9 rounded-full">
                                     <div>
                                         <div class="bg-gray-100 dark:bg-dark-third p-2 rounded-2xl text-sm">
                                             <span class="font-semibold block">John Doe</span>
@@ -712,7 +712,7 @@
                     <!-- COMMENT FORM -->
                     <div class="py-2 px-4">
                         <div class="flex space-x-2">
-                            <img src="./images/tuat.jpg" alt="Profile picture" class="w-9 h-9 rounded-full">
+                            <img src="{{ url_for('static', filename='./images/tuat.jpg') }}" alt="Profile picture" class="w-9 h-9 rounded-full">
                             <div class="flex-1 flex bg-gray-100 dark:bg-dark-third rounded-full items-center justify-between px-3">
                                 <input type="text" placeholder="Write a comment..." class="outline-none bg-transparent flex-1">
                                 <div class="flex space-x-0 items-center justify-center">
@@ -743,7 +743,7 @@
                 </div>
                 <div class="p-2">
                     <a href="#" class="flex items-center space-x-4 p-2 hover:bg-gray-200 dark:hover:bg-dark-third rounded-lg transition-all">
-                        <img src="./images/avt.jpg" alt="Profile picture" class="w-16 h-16 rounded-full">
+                        <img src="{{ url_for('static', filename='./images/avt.jpg') }}" alt="Profile picture" class="w-16 h-16 rounded-full">
                         <div class="flex-1 h-full">
                             <div class="dark:text-dark-txt">
                                 <span class="font-semibold">Sakura Hinata</span>
@@ -777,7 +777,7 @@
                     <li>
                         <div class="flex items-center space-x-4 p-2 hover:bg-gray-200 dark:hover:bg-dark-third dark:text-dark-txt rounded-lg cursor-pointer">
                             <div class="relative">
-                                <img src="./images/avt-3.jpg" alt="Friends profile picture" class="rounded-full">
+                                <img src="{{ url_for('static', filename='./images/avt-3.jpg') }}" alt="Friends profile picture" class="rounded-full">
                                 <span class="bg-green-500 w-3 h-3 rounded-full absolute right-0 top-3/4 border-white border-2"></span>
                             </div>
                             <div>
@@ -788,7 +788,7 @@
                     <li>
                         <div class="flex items-center space-x-4 p-2 hover:bg-gray-200 dark:hover:bg-dark-third dark:text-dark-txt rounded-lg cursor-pointer">
                             <div class="relative">
-                                <img src="./images/avt-2.jpg" alt="Friends profile picture" class="rounded-full">
+                                <img src="{{ url_for('static', filename='./images/avt-2.jpg') }}" alt="Friends profile picture" class="rounded-full">
                                 <span class="bg-green-500 w-3 h-3 rounded-full absolute right-0 top-3/4 border-white border-2"></span>
                             </div>
                             <div>
@@ -799,7 +799,7 @@
                     <li>
                         <div class="flex items-center space-x-4 p-2 hover:bg-gray-200 dark:hover:bg-dark-third dark:text-dark-txt rounded-lg cursor-pointer">
                             <div class="relative">
-                                <img src="./images/avt-4.jpg" alt="Friends profile picture" class="rounded-full">
+                                <img src="{{ url_for('static', filename='./images/avt-4.jpg') }}" alt="Friends profile picture" class="rounded-full">
                                 <span class="bg-green-500 w-3 h-3 rounded-full absolute right-0 top-3/4 border-white border-2"></span>
                             </div>
                             <div>
@@ -810,7 +810,7 @@
                     <li>
                         <div class="flex items-center space-x-4 p-2 hover:bg-gray-200 dark:hover:bg-dark-third dark:text-dark-txt rounded-lg cursor-pointer">
                             <div class="relative">
-                                <img src="./images/avt-5.jpg" alt="Friends profile picture" class="rounded-full">
+                                <img src="{{ url_for('static', filename='./images/avt-5.jpg') }}" alt="Friends profile picture" class="rounded-full">
                                 <span class="bg-green-500 w-3 h-3 rounded-full absolute right-0 top-3/4 border-white border-2"></span>
                             </div>
                             <div>
@@ -821,7 +821,7 @@
                     <li>
                         <div class="flex items-center space-x-4 p-2 hover:bg-gray-200 dark:hover:bg-dark-third dark:text-dark-txt rounded-lg cursor-pointer">
                             <div class="relative">
-                                <img src="./images/avt-6.png" alt="Friends profile picture" class="rounded-full">
+                                <img src="{{ url_for('static', filename='./images/avt-6.png') }}" alt="Friends profile picture" class="rounded-full">
                                 <span class="bg-green-500 w-3 h-3 rounded-full absolute right-0 top-3/4 border-white border-2"></span>
                             </div>
                             <div>
@@ -832,7 +832,7 @@
                     <li>
                         <div class="flex items-center space-x-4 p-2 hover:bg-gray-200 dark:hover:bg-dark-third dark:text-dark-txt rounded-lg cursor-pointer">
                             <div class="relative">
-                                <img src="./images/avt-4.jpg" alt="Friends profile picture" class="rounded-full">
+                                <img src="{{ url_for('static', filename='./images/avt-4.jpg') }}" alt="Friends profile picture" class="rounded-full">
                                 <span class="bg-green-500 w-3 h-3 rounded-full absolute right-0 top-3/4 border-white border-2"></span>
                             </div>
                             <div>
@@ -843,7 +843,7 @@
                     <li>
                         <div class="flex items-center space-x-4 p-2 hover:bg-gray-200 dark:hover:bg-dark-third dark:text-dark-txt rounded-lg cursor-pointer">
                             <div class="relative">
-                                <img src="./images/avt-5.jpg" alt="Friends profile picture" class="rounded-full">
+                                <img src="{{ url_for('static', filename='./images/avt-5.jpg') }}" alt="Friends profile picture" class="rounded-full">
                                 <span class="bg-green-500 w-3 h-3 rounded-full absolute right-0 top-3/4 border-white border-2"></span>
                             </div>
                             <div>
@@ -854,7 +854,7 @@
                     <li>
                         <div class="flex items-center space-x-4 p-2 hover:bg-gray-200 dark:hover:bg-dark-third dark:text-dark-txt rounded-lg cursor-pointer">
                             <div class="relative">
-                                <img src="./images/avt-6.png" alt="Friends profile picture" class="rounded-full">
+                                <img src="{{ url_for('static', filename='./images/avt-6.png') }}" alt="Friends profile picture" class="rounded-full">
                                 <span class="bg-green-500 w-3 h-3 rounded-full absolute right-0 top-3/4 border-white border-2"></span>
                             </div>
                             <div>
@@ -865,7 +865,7 @@
                     <li>
                         <div class="flex items-center space-x-4 p-2 hover:bg-gray-200 dark:hover:bg-dark-third dark:text-dark-txt rounded-lg cursor-pointer">
                             <div class="relative">
-                                <img src="./images/avt-4.jpg" alt="Friends profile picture" class="rounded-full">
+                                <img src="{{ url_for('static', filename='./images/avt-4.jpg') }}" alt="Friends profile picture" class="rounded-full">
                                 <span class="bg-green-500 w-3 h-3 rounded-full absolute right-0 top-3/4 border-white border-2"></span>
                             </div>
                             <div>
@@ -876,7 +876,7 @@
                     <li>
                         <div class="flex items-center space-x-4 p-2 hover:bg-gray-200 dark:hover:bg-dark-third dark:text-dark-txt rounded-lg cursor-pointer">
                             <div class="relative">
-                                <img src="./images/avt-5.jpg" alt="Friends profile picture" class="rounded-full">
+                                <img src="{{ url_for('static', filename='./images/avt-5.jpg') }}" alt="Friends profile picture" class="rounded-full">
                                 <span class="bg-green-500 w-3 h-3 rounded-full absolute right-0 top-3/4 border-white border-2"></span>
                             </div>
                             <div>
@@ -887,7 +887,7 @@
                     <li>
                         <div class="flex items-center space-x-4 p-2 hover:bg-gray-200 dark:hover:bg-dark-third dark:text-dark-txt rounded-lg cursor-pointer">
                             <div class="relative">
-                                <img src="./images/avt-6.png" alt="Friends profile picture" class="rounded-full">
+                                <img src="{{ url_for('static', filename='./images/avt-6.png') }}" alt="Friends profile picture" class="rounded-full">
                                 <span class="bg-green-500 w-3 h-3 rounded-full absolute right-0 top-3/4 border-white border-2"></span>
                             </div>
                             <div>
@@ -898,7 +898,7 @@
                     <li>
                         <div class="flex items-center space-x-4 p-2 hover:bg-gray-200 dark:hover:bg-dark-third dark:text-dark-txt rounded-lg cursor-pointer">
                             <div class="relative">
-                                <img src="./images/avt-4.jpg" alt="Friends profile picture" class="rounded-full">
+                                <img src="{{ url_for('static', filename='./images/avt-4.jpg') }}" alt="Friends profile picture" class="rounded-full">
                                 <span class="bg-green-500 w-3 h-3 rounded-full absolute right-0 top-3/4 border-white border-2"></span>
                             </div>
                             <div>
@@ -909,7 +909,7 @@
                     <li>
                         <div class="flex items-center space-x-4 p-2 hover:bg-gray-200 dark:hover:bg-dark-third dark:text-dark-txt rounded-lg cursor-pointer">
                             <div class="relative">
-                                <img src="./images/avt-5.jpg" alt="Friends profile picture" class="rounded-full">
+                                <img src="{{ url_for('static', filename='./images/avt-5.jpg') }}" alt="Friends profile picture" class="rounded-full">
                                 <span class="bg-green-500 w-3 h-3 rounded-full absolute right-0 top-3/4 border-white border-2"></span>
                             </div>
                             <div>
