@@ -14,8 +14,8 @@
         <div class="login">
             <form action="/login" method="post">
                 <div class="box1">
-                    <span><strong>Email or Phone</strong></span><br>
-                    <input style="color: rgb(0, 0, 0);" type="text" name="usernameLogin" placeholder="Email address or phone number"><br>
+                    <span><strong>Email</strong></span><br>
+                    <input style="color: rgb(0, 0, 0);" type="text" name="emailLogin" placeholder="Email"><br>
                     <input type="checkbox"> Keep me logged in
                 </div>
                 <div class="box2">
@@ -50,13 +50,12 @@
                 It's free and always will be
                 <br><br>
                 <form action="/" method="post">
-                <input type="text" placeholder="First name">
-                <input type="text" placeholder="Last name">
+                <input type="text" name= "name" placeholder="First name">
+                <input type="text" name= "last_name" placeholder="Last name">
                 <br>
                 <div class="other">
-                    <input type="text" name= "username" placeholder="Email or mobile number">
-                    <br>
-                    <input type="email" placeholder="Re-enter email or mobile number">
+                    <input type="text" name= "email" placeholder="Email">
+
                     <br>
                     <input type="password" name= "password" placeholder="Enter password">
                     <br><br>
@@ -64,7 +63,7 @@
                 Birthday
                 <br>
                 <div class="birthday">
-                <select>
+                <select name = "mes">
                     <option>Month</option>
                     <option>Jan</option>
                     <option>Feb</option>
@@ -80,14 +79,14 @@
                     <option>Dec</option>
                 </select>
 
-                <select>
+                <select name = "day">
                     <option>Day</option>
                     <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
                     <option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option>
                     <option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option>
                 </select>
 
-                <select>
+                <select name = "year">
                     <option>Year</option>
                     <option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option><option>2015</option><option>2014</option><option>2013</option><option>2012</option><option>2011</option>
                     <option>2010</option><option>2009</option><option>2008</option><option>2007</option><option>2006</option><option>2005</option><option>2004</option><option>2003</option><option>2002</option><option>2001</option>
@@ -100,17 +99,25 @@
                     <option>1940</option><option>1939</option><option>1938</option><option>1937</option><option>1936</option><option>1935</option><option>1934</option><option>1933</option><option>1932</option><option>1931</option>
                     <option>1930</option><option>1929</option><option>1928</option><option>1927</option><option>1926</option><option>1925</option><option>1924</option><option>1923</option><option>1922</option><option>1921</option>
                 </select>
-                <div class="right-text"><a href="#">Why do I need to provide my<br> birthday?</a></div>
+                <br>
                 <br>
                 </div>
                 <span class="gender">
-                <input type="radio" value="Female">Female
-                <input type="radio" value="Male">Male
-                </span>
+                    <input type="checkbox" name="female" id="female" value="Female">
+                    <label for="female">Female</label>
+                    <input type="checkbox" name="male" id="male" value="Male">
+                    <label for="male">Male</label>
+                    <input type="checkbox" name="otro" id="otro" value="Other">
+                    <label for="other">Other</label>
+                  </span>
+                  
+                  
                 <br><br>
                 <span class="policy">By clicking Sign up,you agree to out <a href="#">Terms</a> and that you have<br>read our <a href="#">Data Policy</a>, including our <a href="#"> Cookie Use</a>.</span>
                 <br><br>
                 <button class="submit btn btn-block" type="submit">Sign Up</button>
+                <br>
+                <br>
                 <br>
             </form>
             </div>
