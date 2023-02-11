@@ -1,0 +1,61 @@
+/* Estilo del modal */
+.modal {
+    display: none; /* Ocultar el modal por defecto */
+    position: fixed; /* Fijar la posición del modal */
+    z-index: 1; /* Asegurarse de que está por encima de otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Alto completo */
+    overflow: auto; /* Habilita scroll si el contenido es muy largo */
+    background-color: rgb(0,0,0); /* Color de fondo oscuro */
+    background-color: rgba(0,0,0,0.4); /* Opacidad */
+    border-radius: 5px;
+  }
+
+  /* Estilo del contenido del modal */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% desde la parte superior y centrado */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%; /* Ancho del 60% */
+    border-radius: 10px;
+  }
+
+  /*Estilo de los input*/
+  input[type="password"] {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  
+
+  /* Estilo del botón que abre el modal */
+  .open-button {
+    background-color: #555;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 23px;
+    right: 28px;
+    width: 280px;
+  }
+
+  /* Estilo para el botón "cerrar" */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
