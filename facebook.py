@@ -1,6 +1,6 @@
 from flask import Flask, request, redirect, render_template, session, flash
 from pymongo import MongoClient
-
+from bson.objectid import ObjectId
 
 app = Flask(__name__)
 
@@ -46,14 +46,19 @@ def signup():
 def welcome():
     email = session.get('email')
     if request.method == "POST":
-        publicacion = request.form['texto']
-        insertar = {
-            "autor": email,
-            "post" : publicacion,
-            "likes" : 0
-        }
-        collectionPosts.insert_one(insertar)
-        flash("Publicacion con éxito!")
+        if "like_post" in request.form:
+            post_id = request.form["like_post"]
+            collectionPosts.update_one({"_id": ObjectId(post_id)}, {"$inc": {"likes": 1}})
+            flash("¡Like agregado!")
+        else:
+            publicacion = request.form['texto']
+            insertar = {
+                "autor": email,
+                "post" : publicacion,
+                "likes" : 0
+            }
+            collectionPosts.insert_one(insertar)
+            flash("Publicacion con éxito!")
     # Obtener los posts ordenados por likes
     posts = collectionPosts.find().sort("likes", -1)
     return render_template('welcome.html', usuario=email, posts=posts)
