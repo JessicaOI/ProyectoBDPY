@@ -10,14 +10,33 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/fb-logo.png') }}" type="image/png">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/changepass.css') }}">
 </head>
 
 <body class="bg-gray-100 dark:bg-dark-main">
+    <!-- Modal dialog de cambiar contrasena -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <h1>Cambio de Contraseña</h1>
+          <form action="submit_password.php" method="post">
+            <label for="current_password">Contraseña Actual:</label>
+            <input type="password" id="current_password" placeholder="Current Password" name="current_password"><br><br>
+            <label for="new_password">Nueva Contraseña:</label>
+            <input type="password" id="new_password" name="new_password"><br>
+          </form>
+        </div>
+      </div>
+      <script type="text/javascript" src="{{ url_for('static', filename='js/changepass.js') }}"></script>
+      
     <!-- NAV -->
     <nav class="bg-white dark:bg-dark-second h-max md:h-14 w-full shadow flex flex-col md:flex-row items-center justify-center md:justify-between fixed top-0 z-50 border-b dark:border-dark-third">
 
         <!-- LEFT NAV -->
         <div class="flex items-center justify-between w-full md:w-max px-4 py-2">
+            
+
             <a href="#" class="mr-2 hidden md:inline-block">
                 <img src="{{ url_for('static', filename='images/fb-logo.png') }}" alt="Facebook logo" class="w-24 sm:w-20 lg:w-10 h-auto">
             </a>
@@ -46,26 +65,16 @@
                     <i class='bx bxs-home'></i>
                 </a>
             </li>
-            <li class="w-1/5 md:w-max text-center">
-                <a href="#" class="w-full text-3xl py-2 px-3 xl:px-12 cursor-pointer text-center inline-block rounded text-gray-600 hover:bg-gray-100 dark:hover:bg-dark-third dark:text-dark-txt relative">
-                    <i class='bx bx-movie-play'></i>
-                    <span class="text-xs absolute top-0 right-1/4 bg-red-500 text-white font-semibold rounded-full px-1 text-center">9+</span>
-                </a>
-            </li>
-            <li class="w-1/5 md:w-max text-center">
-                <a href="#" class="w-full text-3xl py-2 px-3 xl:px-12 cursor-pointer text-center inline-block rounded text-gray-600 hover:bg-gray-100 dark:hover:bg-dark-third dark:text-dark-txt relative">
-                    <i class='bx bx-store'></i>
-                </a>
-            </li>
+           
             <li class="w-1/5 md:w-max text-center">
                 <a href="#" class="w-full text-3xl py-2 px-3 xl:px-12 cursor-pointer text-center inline-block rounded text-gray-600 hover:bg-gray-100 dark:hover:bg-dark-third dark:text-dark-txt relative">
                     <i class='bx bx-group'></i>
                 </a>
             </li>
             <li class="w-1/5 md:w-max text-center hidden md:inline-block">
-                <a href="#" class="w-full text-3xl py-2 px-3 xl:px-12 cursor-pointer text-center inline-block rounded text-gray-600 hover:bg-gray-100 dark:hover:bg-dark-third dark:text-dark-txt relative">
-                    <i class='bx bx-layout'></i>
-                    <span class="text-xs absolute top-0 right-1/4 bg-red-500 text-white font-semibold rounded-full px-1 text-center">9+</span>
+                <a href="/logout" class="w-full text-3xl py-2 px-3 xl:px-12 cursor-pointer text-center inline-block rounded text-gray-600 hover:bg-gray-100 dark:hover:bg-dark-third dark:text-dark-txt relative">
+                    <i class='bx bx-log-out'></i>
+                    <p style="font-size: 9px; margin: -18px;">Log out</p>
                 </a>
             </li>
             <li class="w-1/5 md:w-max text-center inline-block md:hidden">
@@ -80,8 +89,8 @@
         <ul class="hidden md:flex mx-4 items-center justify-center">
             <li class="h-full hidden xl:flex">
                 <a href="#" class="inline-flex items-center justify-center p-1 rounded-full hover:bg-gray-200 dark:hover:bg-dark-third mx-1">
-                    <img src="{{ url_for('static', filename='images/tuat.jpg') }}" alt="Profile picture" class="rounded-full h-7 w-7">
-                    <span class="mx-2 font-semibold dark:text-dark-txt">Tuat</span>
+                    <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Profile picture" class="rounded-full h-7 w-7">
+                    <span class="mx-2 font-semibold dark:text-dark-txt">{{ email }}</span>
                 </a>
             </li>
             <li>
@@ -117,20 +126,15 @@
             <ul class="p-4">
                 <li>
                     <a href="#" class="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded-lg transition-all dark:text-dark-txt dark:hover:bg-dark-third">
-                        <img src="{{ url_for('static', filename='images/tuat.jpg') }}" alt="Profile picture" class="w-10 h-10 rounded-full">
-                        <span class="font-semibold">Tran Anh Tuat</span>
+                        <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Profile picture" class="w-10 h-10 rounded-full">
+                        <!-- aqui llamo el email logueado -->
+                        <span class="font-semibold">{{ email }}</span>
                     </a>
                 </li>
                 <li>
                     <a href="#" class="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded-lg transition-all dark:text-dark-txt dark:hover:bg-dark-third">
                         <img src="{{ url_for('static', filename='images/friends.png') }}" alt="Profile picture" class="w-10 h-10 rounded-full">
                         <span class="font-semibold">Friends</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded-lg transition-all dark:text-dark-txt dark:hover:bg-dark-third">
-                        <img src="{{ url_for('static', filename='images/page.png') }}" alt="Profile picture" class="w-10 h-10 rounded-full">
-                        <span class="font-semibold">Pages</span>
                     </a>
                 </li>
                 <li>
@@ -146,11 +150,21 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded-lg transition-all dark:text-dark-txt dark:hover:bg-dark-third">
+                    <a href="#" onclick="openModal(); return false;" class="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded-lg transition-all dark:text-dark-txt dark:hover:bg-dark-third">
                         <span class="w-10 h-10 rounded-full grid place-items-center bg-gray-300 dark:bg-dark-second">
-                            <i class='bx bx-chevron-down'></i>
+                            <i class='bx bxs-key'></i>
                         </span>
-                        <span class="font-semibold">See more</span>
+                        <span class="font-semibold">Change Password</span>
+                    </a>
+
+                </li>
+                <br>
+                <br>
+                <br>
+                <li>
+                    <a href="/deleteUser" class="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded-lg transition-all dark:text-dark-txt dark:hover:bg-dark-third">
+                        <img src="{{ url_for('static', filename='images/page.png') }}" alt="Profile picture" class="w-10 h-10 rounded-full">
+                        <span class="font-semibold">Delete User</span>
                     </a>
                 </li>
                 <li class="border-b border-gray-200 dark:border-dark-third mt-6"></li>
@@ -217,10 +231,10 @@
             <div class="relative flex space-x-2 pt-4">
                 <div class="w-1/4 sm:w-1/6 h-44 rounded-xl shadow overflow-hidden flex flex-col group cursor-pointer">
                     <div class="h-3/5 overflow-hidden">
-                        <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="picture" class="group-hover:transform group-hover:scale-110 transition-all duration-700">
+                        <img src="{{ url_for('static', filename='images/perfilT.png') }}" alt="picture" class="group-hover:transform group-hover:scale-110 transition-all duration-700">
                     </div>
                     <div class="flex-1 relative flex items-end justify-center pb-2 text-center leading-none dark:bg-dark-second dark:text-dark-txt">
-                        <span class="font-semibold">
+                        <span class="font-semibold">    
                             Create a <br> Story
                         </span>
                         <div class="w-10 h-10 rounded-full bg-blue-500 text-white grid place-items-center text-2xl border-4 border-white dark:border-dark-second absolute -top-5 left-1/2 transform -translate-x-1/2">
@@ -236,7 +250,7 @@
                             Your story
                         </span>
                         <div class="w-10 h-10 rounded-full overflow-hidden absolute top-2 left-2 border-4 border-blue-500">
-                            <img src="{{ url_for('static', filename='images/tuat.jpg') }}" alt="Profile picture">
+                            <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Profile picture">
                         </div>
                     </div>
                 </div>
@@ -260,7 +274,7 @@
                             John Doe
                         </span>
                         <div class="w-10 h-10 rounded-full overflow-hidden absolute top-2 left-2 border-4 border-blue-500">
-                            <img src="{{ url_for('static', filename='images/avt-6.jpg') }}" alt="Profile picture">
+                            <img src="{{ url_for('static', filename='images/avt-6.png') }}" alt="Profile picture">
                         </div>
                     </div>
                 </div>
@@ -272,7 +286,7 @@
                             John Doe
                         </span>
                         <div class="w-10 h-10 rounded-full overflow-hidden absolute top-2 left-2 border-4 border-blue-500">
-                            <img src="{{ url_for('static', filename='images/avt-6.jpg') }}" alt="Profile picture">
+                            <img src="{{ url_for('static', filename='images/avt-6.png') }}" alt="Profile picture">
                         </div>
                     </div>
                 </div>
@@ -297,10 +311,10 @@
             <!-- POST FORM -->
             <div class="px-4 mt-4 shadow rounded-lg bg-white dark:bg-dark-second">
                 <div class="p-2 border-b border-gray-300 dark:border-dark-third flex space-x-4">
-                    <img src="{{ url_for('static', filename='./images/tuat.jpg') }}" alt="Profile picture" class="w-10 h-10 rounded-full">
+                    <img src="{{ url_for('static', filename='./images/perfil.png') }}" alt="Profile picture" class="w-10 h-10 rounded-full">
                     <div class="flex-1 bg-gray-100 rounded-full flex items-center justify-start pl-4 cursor-pointer dark:bg-dark-third text-gray-500 text-lg dark:text-dark-txt">
                         <span>
-                            What's on your mind, Tuat?
+                            What's on your mind, {{name}}?
                         </span>
                     </div>
                 </div>
@@ -533,7 +547,7 @@
                     <!-- COMMENT FORM -->
                     <div class="py-2 px-4">
                         <div class="flex space-x-2">
-                            <img src="{{ url_for('static', filename='./images/tuat.jpg') }}" alt="Profile picture" class="w-9 h-9 rounded-full">
+                            <img src="{{ url_for('static', filename='./images/perfil.png') }}" alt="Profile picture" class="w-9 h-9 rounded-full">
                             <div class="flex-1 flex bg-gray-100 dark:bg-dark-third rounded-full items-center justify-between px-3">
                                 <input type="text" placeholder="Write a comment..." class="outline-none bg-transparent flex-1">
                                 <div class="flex space-x-0 items-center justify-center">
@@ -712,7 +726,7 @@
                     <!-- COMMENT FORM -->
                     <div class="py-2 px-4">
                         <div class="flex space-x-2">
-                            <img src="{{ url_for('static', filename='./images/tuat.jpg') }}" alt="Profile picture" class="w-9 h-9 rounded-full">
+                            <img src="{{ url_for('static', filename='./images/perfil.png') }}" alt="Profile picture" class="w-9 h-9 rounded-full">
                             <div class="flex-1 flex bg-gray-100 dark:bg-dark-third rounded-full items-center justify-between px-3">
                                 <input type="text" placeholder="Write a comment..." class="outline-none bg-transparent flex-1">
                                 <div class="flex space-x-0 items-center justify-center">
@@ -746,7 +760,7 @@
                         <img src="{{ url_for('static', filename='./images/avt.jpg') }}" alt="Profile picture" class="w-16 h-16 rounded-full">
                         <div class="flex-1 h-full">
                             <div class="dark:text-dark-txt">
-                                <span class="font-semibold">Sakura Hinata</span>
+                                <span class="font-semibold">Jeon Jungkook</span>
                                 <span class="float-right">6d</span>
                             </div>
                             <div class="flex space-x-2 mt-2">

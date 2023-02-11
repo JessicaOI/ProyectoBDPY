@@ -35,21 +35,36 @@ def signup():
         if not gender:
             return "You must select a gender option."
         
-        collectionUsers.insert_one({'name': name, 'last_name': last_name,'email': email, 'password': password, 'gender': gender})
+        collectionUsers.insert_one({'name': name, 'last_name': last_name,'email': email, 'password': password, 'gender': gender,})
+        session['email'] = email
         return redirect('/welcome')
     return render_template('signupLogin.html')
 
 
-
-
 @app.route('/welcome')
 def welcome():
-    return render_template('welcome.html')
+    email = session.get('email')
+    return render_template('welcome.html', email=email)
+
 
 @app.route('/logout')
 def logout():
     session.pop('email', None)
     return redirect('/')
+
+@app.route('/changePass')
+def changePass():
+    email = session.get('email')
+    return render_template('changePass.html', email=email)
+
+@app.route('/deleteUser')
+def deleteUser():
+    email = session.get('email')
+     # Eliminar el documento correspondiente al correo electrónico especificado
+    collectionUsers.delete_one({"email": email})
+    session.pop('email', None)
+    return redirect('/')
+
 
 if __name__ == '__main__':
     app.run()
