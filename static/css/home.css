@@ -1474,5 +1474,20 @@ video {
     flex-direction: column;
 }
 
+.publicar_form{
+ background-color: #3A3B3C;
+ display: flex;
+ justify-content: space-between;
+ padding: 10px;
+ width: 90%;
+}
+
+.publicar_form input{
+  background-color: #3A3B3C;
+  border: 1px solid #B8BBBF;
+  color: #B8BBBF;
+  width: 80%;
+}
+
 @media (min-width: 1536px) {
 }

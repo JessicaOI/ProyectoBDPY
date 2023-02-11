@@ -313,7 +313,7 @@
                 <div class="p-2 border-b border-gray-300 dark:border-dark-third flex space-x-4">
                     <img src="{{ url_for('static', filename='./images/perfil.png') }}" alt="Profile picture" class="w-10 h-10 rounded-full">
                     <div class="flex-1 bg-gray-100 rounded-full flex items-center justify-start pl-4 cursor-pointer dark:bg-dark-third text-gray-500 text-lg dark:text-dark-txt">
-                        <form action="{{ url_for('welcome') }}" method="POST">
+                        <form class="publicar_form" action="{{ url_for('welcome') }}" method="POST">
                             <input type="text" name="texto">
                             <button type="submit">Publicar</button>
                         </form>
