@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        Facebook
+        Facebook, {{ usuario }}
     </title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/fb-logo.png') }}" type="image/png">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -313,9 +313,10 @@
                 <div class="p-2 border-b border-gray-300 dark:border-dark-third flex space-x-4">
                     <img src="{{ url_for('static', filename='./images/perfil.png') }}" alt="Profile picture" class="w-10 h-10 rounded-full">
                     <div class="flex-1 bg-gray-100 rounded-full flex items-center justify-start pl-4 cursor-pointer dark:bg-dark-third text-gray-500 text-lg dark:text-dark-txt">
-                        <span>
-                            What's on your mind, {{name}}?
-                        </span>
+                        <form action="{{ url_for('welcome') }}" method="POST">
+                            <input type="text" name="texto">
+                            <button type="submit">Publicar</button>
+                        </form>
                     </div>
                 </div>
                 <div class="p-2 flex">

@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, render_template, session
+from flask import Flask, request, redirect, render_template, session, flash
 from pymongo import MongoClient
 
 
@@ -9,6 +9,7 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 client = MongoClient("mongodb://localhost:27017/")
 db = client["proyecto1"]
 collectionUsers = db["users"]
+collectionPosts = db["Posts"]
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -41,11 +42,21 @@ def signup():
     return render_template('signupLogin.html')
 
 
-@app.route('/welcome')
+@app.route('/welcome', methods=['GET', 'POST'])
 def welcome():
     email = session.get('email')
-    return render_template('welcome.html', email=email)
+    if request.method == "POST":
+        publicacion = request.form['texto']
+        insertar = {
+            "autor": email,
+            "post" : publicacion
+        }
+        collectionPosts.insert_one(insertar)
+        flash("Publicacion con éxito!")
+    return render_template('welcome.html', usuario=email)
 
+
+    
 
 @app.route('/logout')
 def logout():
