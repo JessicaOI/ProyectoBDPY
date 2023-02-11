@@ -389,78 +389,81 @@
             </div>
             {% for post in posts %}
             <!-- POST -->
-            <div class="shadow bg-white dark:bg-dark-second dark:text-dark-txt mt-4 rounded-lg">
-                <!-- POST AUTHOR -->
-                <div class="flex items-center justify-between px-4 py-2">
-                    <div class="flex space-x-2 items-center">
-                        <div class="relative">
-                            <img src="{{ url_for('static', filename='./images/avt-2.jpg') }}" alt="Profile picture" class="w-10 h-10 rounded-full">
-                            <span class="bg-green-500 w-3 h-3 rounded-full absolute right-0 top-3/4 border-white border-2"></span>
-                        </div>
-                        <div>
-                            <div class="font-semibold">
-                                {{ post.autor }}
+            <div>
+                <div class="shadow bg-white dark:bg-dark-second dark:text-dark-txt mt-4 rounded-lg">
+                    <!-- POST AUTHOR -->
+                    <div class="flex items-center justify-between px-4 py-2">
+                        <div class="flex space-x-2 items-center">
+                            <div class="relative">
+                                <img src="{{ url_for('static', filename='./images/avt-2.jpg') }}" alt="Profile picture" class="w-10 h-10 rounded-full">
+                                <span class="bg-green-500 w-3 h-3 rounded-full absolute right-0 top-3/4 border-white border-2"></span>
                             </div>
-                            <span class="text-sm text-gray-500">38m</span>
+                            <div>
+                                <div class="font-semibold">
+                                    {{ post.autor }}
+                                </div>
+                                <span class="text-sm text-gray-500">38m</span>
+                            </div>
+                        </div>
+                        <div class="w-8 h-8 grid place-items-center text-xl text-gray-500 hover:bg-gray-200 dark:text-dark-txt dark:hover:bg-dark-third rounded-full cursor-pointer">
+                            <i class='bx bx-dots-horizontal-rounded'></i>
                         </div>
                     </div>
-                    <div class="w-8 h-8 grid place-items-center text-xl text-gray-500 hover:bg-gray-200 dark:text-dark-txt dark:hover:bg-dark-third rounded-full cursor-pointer">
-                        <i class='bx bx-dots-horizontal-rounded'></i>
+                    <!-- END POST AUTHOR -->
+    
+                    <!-- POST CONTENT -->
+                    <div class="text-justify px-4 py-2">
+                        {{ post.post }}
                     </div>
-                </div>
-                <!-- END POST AUTHOR -->
-
-                <!-- POST CONTENT -->
-                <div class="text-justify px-4 py-2">
-                    {{ post.post }}
-                </div>
-                <!-- END POST CONTENT -->
-
-                <!-- POST REACT -->
-                <div class="px-4 py-2">
-                    <div class="flex items-center justify-between">
-                        <div class="flex flex-row-reverse items-center">
-                            <span class="ml-2 text-gray-500 dark:text-dark-txt">999</span>
-                            <span class="rounded-full grid place-items-center text-2xl -ml-1 text-red-800">
-                                <i class='bx bxs-angry'></i>
-                            </span>
-                            <span class="rounded-full grid place-items-center text-2xl -ml-1 text-red-500">
-                                <i class='bx bxs-heart-circle'></i>
-                            </span>
-                            <span class="rounded-full grid place-items-center text-2xl -ml-1 text-yellow-500">
-                                <i class='bx bx-happy-alt'></i>
-                            </span>
-                        </div>
-                        <div class="text-gray-500 dark:text-dark-txt">
-                            <span>90 comments</span>
-                            <span>66 Shares</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- END POST REACT -->
-
-                <!-- POST ACTION -->
-                <div class="py-2 px-4">
-                    <div class="border border-gray-200 dark:border-dark-third border-l-0 border-r-0 py-1">
-                        <div class="flex space-x-2">
-                            <div class="w-1/3 flex space-x-2 justify-center items-center hover:bg-gray-100 dark:hover:bg-dark-third text-xl py-2 rounded-lg cursor-pointer text-gray-500 dark:text-dark-txt">
-                                <i class='bx bx-like'></i>
-                                <span class="text-sm font-semibold">{{ post.likes }}</span>
+                    <!-- END POST CONTENT -->
+    
+                    <!-- POST REACT -->
+                    <div class="px-4 py-2">
+                        <div class="flex items-center justify-between">
+                            <div class="flex flex-row-reverse items-center">
+                                <span class="ml-2 text-gray-500 dark:text-dark-txt">999</span>
+                                <span class="rounded-full grid place-items-center text-2xl -ml-1 text-red-800">
+                                    <i class='bx bxs-angry'></i>
+                                </span>
+                                <span class="rounded-full grid place-items-center text-2xl -ml-1 text-red-500">
+                                    <i class='bx bxs-heart-circle'></i>
+                                </span>
+                                <span class="rounded-full grid place-items-center text-2xl -ml-1 text-yellow-500">
+                                    <i class='bx bx-happy-alt'></i>
+                                </span>
                             </div>
-                            <div class="w-1/3 flex space-x-2 justify-center items-center hover:bg-gray-100 dark:hover:bg-dark-third text-xl py-2 rounded-lg cursor-pointer text-gray-500 dark:text-dark-txt">
-                                <i class='bx bx-comment'></i>
-                                <span class="text-sm font-semibold">Comment</span>
-                            </div>
-                            <div class="w-1/3 flex space-x-2 justify-center items-center hover:bg-gray-100 dark:hover:bg-dark-third text-xl py-2 rounded-lg cursor-pointer text-gray-500 dark:text-dark-txt">
-                                <i class='bx bx-share bx-flip-horizontal'></i>
-                                <span class="text-sm font-semibold">Share</span>
+                            <div class="text-gray-500 dark:text-dark-txt">
+                                <span>90 comments</span>
+                                <span>66 Shares</span>
                             </div>
                         </div>
                     </div>
+                    <!-- END POST REACT -->
+    
+                    <!-- POST ACTION -->
+                    <div class="py-2 px-4">
+                        <div class="border border-gray-200 dark:border-dark-third border-l-0 border-r-0 py-1">
+                            <div class="flex space-x-2">
+                                <div class="w-1/3 flex space-x-2 justify-center items-center hover:bg-gray-100 dark:hover:bg-dark-third text-xl py-2 rounded-lg cursor-pointer text-gray-500 dark:text-dark-txt">
+                                    <i class='bx bx-like'></i>
+                                    <span class="text-sm font-semibold">{{ post.likes }}</span>
+                                </div>
+                                <div class="w-1/3 flex space-x-2 justify-center items-center hover:bg-gray-100 dark:hover:bg-dark-third text-xl py-2 rounded-lg cursor-pointer text-gray-500 dark:text-dark-txt">
+                                    <i class='bx bx-comment'></i>
+                                    <span class="text-sm font-semibold">Comment</span>
+                                </div>
+                                <div class="w-1/3 flex space-x-2 justify-center items-center hover:bg-gray-100 dark:hover:bg-dark-third text-xl py-2 rounded-lg cursor-pointer text-gray-500 dark:text-dark-txt">
+                                    <i class='bx bx-share bx-flip-horizontal'></i>
+                                    <span class="text-sm font-semibold">Share</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END POST ACTION -->
+    
                 </div>
-                <!-- END POST ACTION -->
-
             </div>
+           
             <!-- END POST -->            
             {% endfor %}
 
