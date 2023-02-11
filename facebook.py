@@ -64,7 +64,32 @@ def welcome():
     return render_template('welcome.html', usuario=email, posts=posts)
 
 
-    
+@app.route('/proyecciones')
+def proyecciones():
+    # Obtener una instancia del objeto Collection
+    collection = collectionUsers
+
+    # Definir el pipeline de agregación
+    pipeline = [
+        { "$match": { "gender": "Female" } },
+        { "$project": { "name": 1, "gender": 1 } }
+    ]
+    pipeline2 = [
+        { "$match": { "gender": "Male" } },
+        { "$project": { "name": 1, "gender": 1 } }
+    ]
+
+    # Ejecutar la consulta de agregación y obtener los resultados
+    proyecciones = list(collection.aggregate(pipeline))
+    proyecciones2 = list(collection.aggregate(pipeline2))
+
+    # Obtener la cantidad de personas que se están mostrando
+    count = len(proyecciones)
+    count2 = len(proyecciones2)
+
+    # Renderizar la plantilla y pasarle los resultados
+    return render_template('proyecciones.html', proyecciones=proyecciones, proyecciones2=proyecciones2, count=count, count2=count2)
+
 
 @app.route('/logout')
 def logout():

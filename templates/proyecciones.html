@@ -1,0 +1,28 @@
+<p>Mostrando {{ count }} personas:</p>
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Género</th>
+    </tr>
+    {% for proyeccion in proyecciones %}
+        <tr>
+            <td>{{ proyeccion.name }}</td>
+            <td>{{ proyeccion.gender }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<p>Mostrando {{ count2 }} personas:</p>
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Género</th>
+    </tr>
+    {% for proyeccion in proyecciones2 %}
+        <tr>
+            <td>{{ proyeccion.name }}</td>
+            <td>{{ proyeccion.gender }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
