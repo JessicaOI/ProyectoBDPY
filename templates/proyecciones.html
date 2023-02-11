@@ -1,28 +1,41 @@
-<p>Mostrando {{ count }} personas:</p>
+<h2>Proyecciones de mujeres:</h2>
+<p>Mostrando {{ count_f }} personas:</p>
 <table>
     <tr>
         <th>Nombre</th>
         <th>Género</th>
+        <th>Amigos</th>
     </tr>
-    {% for proyeccion in proyecciones %}
+    {% for proyeccion in proyecciones_f %}
         <tr>
             <td>{{ proyeccion.name }}</td>
             <td>{{ proyeccion.gender }}</td>
+            <td>
+                {% for amigo in proyeccion.friends_info %}
+                    {{ amigo.email }}
+                {% endfor %}
+            </td>
         </tr>
     {% endfor %}
 </table>
 
-<p>Mostrando {{ count2 }} personas:</p>
+<h2>Proyecciones de hombres:</h2>
+<p>Mostrando {{ count_m }} personas:</p>
 <table>
     <tr>
         <th>Nombre</th>
         <th>Género</th>
+        <th>Amigos</th>
     </tr>
-    {% for proyeccion in proyecciones2 %}
+    {% for proyeccion in proyecciones_m %}
         <tr>
             <td>{{ proyeccion.name }}</td>
             <td>{{ proyeccion.gender }}</td>
+            <td>
+                {% for amigo in proyeccion.friends_info %}
+                    {{ amigo.email }}
+                {% endfor %}
+            </td>
         </tr>
     {% endfor %}
 </table>
-
