@@ -1,0 +1,59 @@
+[
+    {
+      "_id": {
+        "$oid": "63e74a439cfc1d5a0dd1b675"
+      },
+      "autor": "johndoe@example.com",
+      "post": "Hello, world!",
+      "likes": 5
+    },
+    {
+      "_id": {
+        "$oid": "63e74a6f9cfc1d5a0dd1b676"
+      },
+      "autor": "janedoe@example.com",
+      "post": "This is my first post!",
+      "likes": 2
+    },
+    {
+      "_id": {
+        "$oid": "63e74a939cfc1d5a0dd1b677"
+      },
+      "autor": "mikesmith@example.com",
+      "post": "I love MongoDB",
+      "likes": 10
+    },
+    {
+      "_id": {
+        "$oid": "63e74ac29cfc1d5a0dd1b678"
+      },
+      "autor": "samanthajones@example.com",
+      "post": "Just another day",
+      "likes": 1
+    },
+    {
+      "_id": {
+        "$oid": "63e74ae89cfc1d5a0dd1b679"
+      },
+      "autor": "davidlee@example.com",
+      "post": "My first post with MongoDB",
+      "likes": 4
+    },
+    {
+      "_id": {
+        "$oid": "63e74b129cfc1d5a0dd1b67a"
+      },
+      "autor": "emilywilson@example.com",
+      "post": "Hello, MongoDB community!",
+      "likes": 7
+    },
+    {
+      "_id": {
+        "$oid": "63e74b419cfc1d5a0dd1b67b"
+      },
+      "autor": "tomjohnson@example.com",
+      "post": "Learning MongoDB is fun",
+      "likes": 3
+    }
+  ]
+  
