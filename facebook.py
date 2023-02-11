@@ -49,11 +49,14 @@ def welcome():
         publicacion = request.form['texto']
         insertar = {
             "autor": email,
-            "post" : publicacion
+            "post" : publicacion,
+            "likes" : 0
         }
         collectionPosts.insert_one(insertar)
         flash("Publicacion con éxito!")
-    return render_template('welcome.html', usuario=email)
+    # Obtener los posts ordenados por likes
+    posts = collectionPosts.find().sort("likes", -1)
+    return render_template('welcome.html', usuario=email, posts=posts)
 
 
     
