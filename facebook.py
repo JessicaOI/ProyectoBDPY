@@ -109,8 +109,14 @@ def Room():
     collection = collectionUsers
     
     user_doc = collection.find_one({"email": email})
-    friends = [str(friend) for friend in user_doc.get("friends", [])]
-
+    friend_ids = user_doc.get("friends", [])
+    friends = []
+    
+    for friend_id in friend_ids:
+        friend = collection.find_one({"_id": friend_id})
+        if friend:
+            friends.append(friend['name'] + ' ' + friend['last_name'])
+    
     if request.method == 'POST':
         # Obtener la lista de amigos seleccionados
         selected_friends = request.form.getlist('selected_friends')
@@ -122,6 +128,7 @@ def Room():
     
     # Renderizar la plantilla HTML con la lista de amigos
     return render_template('room.html', friends=friends)
+
 
 
 
