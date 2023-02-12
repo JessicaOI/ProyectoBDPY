@@ -139,9 +139,54 @@ def Room():
             return redirect('/Room')
         elif request.form.get('submit_button') == 'Home':
             return redirect('/welcome')
+        elif request.form.get('submit_button') == 'Chats':
+            return redirect('/Chats')
     
     # Renderizar la plantilla HTML con la lista de amigos
     return render_template('room.html', friends=friends)
+
+
+@app.route('/Chats')
+def Chats():
+    # Obtener el correo electrónico del usuario actual
+    email = session.get('email')
+
+    # Obtener la instancia de la colección de usuarios
+    collection = collectionUsers
+
+    # Obtener el documento del usuario actual
+    user_doc = collection.find_one({"email": email})
+
+    # Obtener la instancia de la colección de salas de chat
+    room_collection = collectionRooms
+
+    # Obtener todas las salas de chat en las que el usuario actual es un participante o el creador
+    rooms = room_collection.find({"$or": [{"creator": user_doc['_id']}, {"participants": user_doc['_id']}]})
+
+    # Crear una lista de diccionarios con la información de cada sala de chat
+    room_info = []
+    for room in rooms:
+        # Obtener el nombre y apellido del creador de la sala de chat
+        creator_doc = collection.find_one({"_id": room['creator']})
+        creator_name = creator_doc['name'] + ' ' + creator_doc['last_name']
+        
+        # Obtener los nombres y apellidos de los participantes de la sala de chat
+        participant_names = []
+        for participant_id in room['participants']:
+            participant_doc = collection.find_one({"_id": participant_id})
+            participant_name = participant_doc['name'] + ' ' + participant_doc['last_name']
+            participant_names.append(participant_name)
+        
+        # Crear un diccionario con la información de la sala de chat y agregarlo a la lista de salas
+        room_dict = {
+            '_id': room['_id'],
+            'creator_name': creator_name,
+            'participant_names': participant_names
+        }
+        room_info.append(room_dict)
+
+    # Renderizar la plantilla con la información de las salas de chat
+    return render_template('chats.html', room_info=room_info)
 
 
 

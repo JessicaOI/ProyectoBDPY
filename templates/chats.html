@@ -1,0 +1,8 @@
+{% for room in room_info %}
+    <div class="room">
+        <h2>Room </h2>
+        <h4>Id del room: {{ room['_id'] }}</h4>
+        <p>Creator: {{ room['creator_name'] }}</p>
+        <p>Participants: {{ room['participant_names']|join(', ') }}</p>
+    </div>
+{% endfor %}
