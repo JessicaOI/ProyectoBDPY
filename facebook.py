@@ -106,13 +106,10 @@ def Room():
     email = session.get('email')
     
     # Obtener la instancia de la colección de usuarios
-    collection = db.collectionUsers
+    collection = collectionUsers
     
-    # Obtener el documento del usuario correspondiente al correo electrónico que ha iniciado sesión
     user_doc = collection.find_one({"email": email})
-    
-    # Obtener la lista de amigos del usuario
-    friends = user_doc.get("friends", [])
+    friends = [str(friend) for friend in user_doc.get("friends", [])]
 
     if request.method == 'POST':
         # Obtener la lista de amigos seleccionados
@@ -121,10 +118,12 @@ def Room():
         # Realizar cualquier procesamiento necesario con la lista de amigos seleccionados
         
         # Redirigir al usuario a la página principal
-        return redirect('/')
+        return render_template('room.html', friends=friends)
     
     # Renderizar la plantilla HTML con la lista de amigos
     return render_template('room.html', friends=friends)
+
+
 
 @app.route('/logout')
 def logout():
