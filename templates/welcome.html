@@ -90,7 +90,7 @@
             <li class="h-full hidden xl:flex">
                 <a href="#" class="inline-flex items-center justify-center p-1 rounded-full hover:bg-gray-200 dark:hover:bg-dark-third mx-1">
                     <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Profile picture" class="rounded-full h-7 w-7">
-                    <span class="mx-2 font-semibold dark:text-dark-txt">{{ email }}</span>
+                    <span class="mx-2 font-semibold dark:text-dark-txt">{{ usuario }}</span>
                 </a>
             </li>
             <li>
@@ -127,8 +127,8 @@
                 <li>
                     <a href="#" class="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded-lg transition-all dark:text-dark-txt dark:hover:bg-dark-third">
                         <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Profile picture" class="w-10 h-10 rounded-full">
-                        <!-- aqui llamo el email logueado -->
-                        <span class="font-semibold">{{ email }}</span>
+                        <!-- aqui llamo el usuario logueado -->
+                        <span class="font-semibold">{{ usuario }}</span>
                     </a>
                 </li>
                 <li>
