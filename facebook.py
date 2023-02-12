@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
-client = MongoClient("mongodb://localhost:27017/")
+client = MongoClient("mongodb+srv://proyecto:btstustatas@cluster0.xunnbo9.mongodb.net/test")
 db = client["proyecto1"]
 collectionUsers = db["users"]
 collectionPosts = db["Posts"]
