@@ -10,7 +10,7 @@ client = MongoClient("mongodb://localhost:27017/")
 db = client["proyecto1"]
 collectionUsers = db["users"]
 collectionPosts = db["Posts"]
-
+collectionRooms = db["Rooms"]
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -118,16 +118,32 @@ def Room():
             friends.append(friend['name'] + ' ' + friend['last_name'])
     
     if request.method == 'POST':
-        # Obtener la lista de amigos seleccionados
-        selected_friends = request.form.getlist('selected_friends')
-        
-        # Realizar cualquier procesamiento necesario con la lista de amigos seleccionados
-        
-        # Redirigir al usuario a la página principal
-        return render_template('room.html', friends=friends)
+        if request.form.get('submit_button') == 'Enviar':
+            # Obtener la lista de amigos seleccionados
+            selected_friends = request.form.getlist('selected_friends')
+            
+            # Obtener los IDs de los amigos seleccionados
+            friend_ids_selected = []
+            for friend_name in selected_friends:
+                first_name, last_name = friend_name.split()
+                friend = collection.find_one({"name": first_name, "last_name": last_name})
+                if friend:
+                    friend_ids_selected.append(friend['_id'])
+            
+            # Crear una nueva sala de chat con el usuario actual como creador y los amigos seleccionados como participantes
+            if friend_ids_selected:
+                room_collection = collectionRooms
+                room_collection.insert_many([{"creator": user_doc['_id'], "participants": friend_ids_selected}])
+
+            # Redirigir al usuario a la página principal
+            return redirect('/Room')
+        elif request.form.get('submit_button') == 'Home':
+            return redirect('/welcome')
     
     # Renderizar la plantilla HTML con la lista de amigos
     return render_template('room.html', friends=friends)
+
+
 
 
 
