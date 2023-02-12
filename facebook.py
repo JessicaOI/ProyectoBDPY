@@ -101,6 +101,31 @@ def proyecciones():
 
     return render_template('proyecciones.html', proyecciones_f=proyecciones_f, proyecciones_m=proyecciones_m, count_f=count_f, count_m=count_m)
 
+@app.route('/Room', methods=['GET', 'POST'])
+def Room():
+    email = session.get('email')
+    
+    # Obtener la instancia de la colección de usuarios
+    collection = db.collectionUsers
+    
+    # Obtener el documento del usuario correspondiente al correo electrónico que ha iniciado sesión
+    user_doc = collection.find_one({"email": email})
+    
+    # Obtener la lista de amigos del usuario
+    friends = user_doc.get("friends", [])
+
+    if request.method == 'POST':
+        # Obtener la lista de amigos seleccionados
+        selected_friends = request.form.getlist('selected_friends')
+        
+        # Realizar cualquier procesamiento necesario con la lista de amigos seleccionados
+        
+        # Redirigir al usuario a la página principal
+        return redirect('/')
+    
+    # Renderizar la plantilla HTML con la lista de amigos
+    return render_template('room.html', friends=friends)
+
 @app.route('/logout')
 def logout():
     session.pop('email', None)
