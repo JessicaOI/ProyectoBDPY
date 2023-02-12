@@ -1,0 +1,35 @@
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/chats.css') }}">
+
+<table class="room-table">
+    <thead>
+      <tr>
+        <th>Room</th>
+        <th>Id del room</th>
+        <th>Creator</th>
+        <th>Participants</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for room in room_info %}
+        <tr class="room">
+          <td>
+            <h2>Room</h2>
+          </td>
+          <td>
+            <p>{{ room['_id'] }}</p>
+          </td>
+          <td>
+            <p>{{ room['creator_name'] }}</p>
+          </td>
+          <td>
+            <p>{{ room['participant_names']|join(', ') }}</p>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
+  <form method="POST">
+    <button type="submit" name="submit_button" value="Home">Home</button>
+  </form>

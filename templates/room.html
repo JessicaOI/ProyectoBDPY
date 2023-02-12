@@ -1,0 +1,13 @@
+<form method="POST">
+    <p>Selecciona los amigos con los que quieres chatear:</p>
+    {% for friend in friends %}
+        <label>
+            <input type="checkbox" name="selected_friends" value="{{ friend }}" /> {{ friend }}
+        </label><br />
+    {% endfor %}
+    <br />
+    <button type="submit" name="submit_button" value="Enviar">Enviar</button>
+    <button type="submit" name="submit_button" value="Home">Home</button>
+    <button type="submit" name="submit_button" value="Chats">Rooms</button>
+</form>
+
