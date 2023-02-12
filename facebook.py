@@ -95,9 +95,23 @@ def proyecciones():
     proyecciones_f = list(collection.aggregate(pipeline))
     proyecciones_m = list(collection.aggregate(pipeline2))
 
+    pipeline3 = [
+    { "$match": { "gender": "Female" } },
+    { "$count": "total_count" }
+    ]
+
+    pipeline4 = [
+        { "$match": { "gender": "Male" } },
+        { "$count": "total_count" }
+    ]
+    
+    p1 = list(collection.aggregate(pipeline3))
+    p2 = list(collection.aggregate(pipeline4))
+    
     # Obtener la cantidad de personas que se están mostrando
-    count_f = len(proyecciones_f)
-    count_m = len(proyecciones_m)
+    count_f = p1[0]["total_count"] if p1 else 0
+    count_m = p2[0]["total_count"] if p2 else 0
+
     
     if request.method == 'POST':
         if request.form.get('submit_button') == 'Home':
