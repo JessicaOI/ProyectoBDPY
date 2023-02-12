@@ -64,7 +64,7 @@ def welcome():
     return render_template('welcome.html', usuario=email, posts=posts)
 
 
-@app.route('/proyecciones')
+@app.route('/proyecciones', methods=['GET', 'POST'])
 def proyecciones():
     # Obtener una instancia del objeto Collection
     collection = collectionUsers
@@ -98,6 +98,10 @@ def proyecciones():
     # Obtener la cantidad de personas que se están mostrando
     count_f = len(proyecciones_f)
     count_m = len(proyecciones_m)
+    
+    if request.method == 'POST':
+        if request.form.get('submit_button') == 'Home':
+            return redirect('/welcome')
 
     return render_template('proyecciones.html', proyecciones_f=proyecciones_f, proyecciones_m=proyecciones_m, count_f=count_f, count_m=count_m)
 
@@ -146,7 +150,7 @@ def Room():
     return render_template('room.html', friends=friends)
 
 
-@app.route('/Chats')
+@app.route('/Chats', methods=['GET', 'POST'])
 def Chats():
     # Obtener el correo electrónico del usuario actual
     email = session.get('email')
@@ -184,6 +188,10 @@ def Chats():
             'participant_names': participant_names
         }
         room_info.append(room_dict)
+        
+        if request.method == 'POST':
+            if request.form.get('submit_button') == 'Home':
+                return redirect('/welcome')
 
     # Renderizar la plantilla con la información de las salas de chat
     return render_template('chats.html', room_info=room_info)
