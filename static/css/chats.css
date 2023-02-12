@@ -1,0 +1,24 @@
+.room-table {
+    border-collapse: collapse;
+    margin: 20px;
+  }
+  
+  .room-table th, .room-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .room-table th {
+    background-color: #4267B2;
+    color: white;
+    text-align: left;
+  }
+  
+  .room-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .room-table tr:hover {
+    background-color: #ddd;
+  }
+  

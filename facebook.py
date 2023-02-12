@@ -10,7 +10,7 @@ client = MongoClient("mongodb://localhost:27017/")
 db = client["proyecto1"]
 collectionUsers = db["users"]
 collectionPosts = db["Posts"]
-
+collectionRooms = db["Rooms"]
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -64,7 +64,7 @@ def welcome():
     return render_template('welcome.html', usuario=email, posts=posts)
 
 
-@app.route('/proyecciones')
+@app.route('/proyecciones', methods=['GET', 'POST'])
 def proyecciones():
     # Obtener una instancia del objeto Collection
     collection = collectionUsers
@@ -98,8 +98,103 @@ def proyecciones():
     # Obtener la cantidad de personas que se están mostrando
     count_f = len(proyecciones_f)
     count_m = len(proyecciones_m)
+    
+    if request.method == 'POST':
+        if request.form.get('submit_button') == 'Home':
+            return redirect('/welcome')
 
     return render_template('proyecciones.html', proyecciones_f=proyecciones_f, proyecciones_m=proyecciones_m, count_f=count_f, count_m=count_m)
+
+@app.route('/Room', methods=['GET', 'POST'])
+def Room():
+    email = session.get('email')
+    
+    # Obtener la instancia de la colección de usuarios
+    collection = collectionUsers
+    
+    user_doc = collection.find_one({"email": email})
+    friend_ids = user_doc.get("friends", [])
+    friends = []
+    
+    for friend_id in friend_ids:
+        friend = collection.find_one({"_id": friend_id})
+        if friend:
+            friends.append(friend['name'] + ' ' + friend['last_name'])
+    
+    if request.method == 'POST':
+        if request.form.get('submit_button') == 'Enviar':
+            # Obtener la lista de amigos seleccionados
+            selected_friends = request.form.getlist('selected_friends')
+            
+            # Obtener los IDs de los amigos seleccionados
+            friend_ids_selected = []
+            for friend_name in selected_friends:
+                first_name, last_name = friend_name.split()
+                friend = collection.find_one({"name": first_name, "last_name": last_name})
+                if friend:
+                    friend_ids_selected.append(friend['_id'])
+            
+            # Crear una nueva sala de chat con el usuario actual como creador y los amigos seleccionados como participantes
+            if friend_ids_selected:
+                room_collection = collectionRooms
+                room_collection.insert_many([{"creator": user_doc['_id'], "participants": friend_ids_selected}])
+
+            # Redirigir al usuario a la página principal
+            return redirect('/Room')
+        elif request.form.get('submit_button') == 'Home':
+            return redirect('/welcome')
+        elif request.form.get('submit_button') == 'Chats':
+            return redirect('/Chats')
+    
+    # Renderizar la plantilla HTML con la lista de amigos
+    return render_template('room.html', friends=friends)
+
+
+@app.route('/Chats', methods=['GET', 'POST'])
+def Chats():
+    # Obtener el correo electrónico del usuario actual
+    email = session.get('email')
+
+    # Obtener la instancia de la colección de usuarios
+    collection = collectionUsers
+
+    # Obtener el documento del usuario actual
+    user_doc = collection.find_one({"email": email})
+
+    # Obtener la instancia de la colección de salas de chat
+    room_collection = collectionRooms
+
+    # Obtener todas las salas de chat en las que el usuario actual es un participante o el creador
+    rooms = room_collection.find({"$or": [{"creator": user_doc['_id']}, {"participants": user_doc['_id']}]})
+
+    # Crear una lista de diccionarios con la información de cada sala de chat
+    room_info = []
+    for room in rooms:
+        # Obtener el nombre y apellido del creador de la sala de chat
+        creator_doc = collection.find_one({"_id": room['creator']})
+        creator_name = creator_doc['name'] + ' ' + creator_doc['last_name']
+        
+        # Obtener los nombres y apellidos de los participantes de la sala de chat
+        participant_names = []
+        for participant_id in room['participants']:
+            participant_doc = collection.find_one({"_id": participant_id})
+            participant_name = participant_doc['name'] + ' ' + participant_doc['last_name']
+            participant_names.append(participant_name)
+        
+        # Crear un diccionario con la información de la sala de chat y agregarlo a la lista de salas
+        room_dict = {
+            '_id': room['_id'],
+            'creator_name': creator_name,
+            'participant_names': participant_names
+        }
+        room_info.append(room_dict)
+        
+        if request.method == 'POST':
+            if request.form.get('submit_button') == 'Home':
+                return redirect('/welcome')
+
+    # Renderizar la plantilla con la información de las salas de chat
+    return render_template('chats.html', room_info=room_info)
 
 @app.route('/logout')
 def logout():
