@@ -106,10 +106,21 @@ def logout():
     session.pop('email', None)
     return redirect('/')
 
-@app.route('/changePass')
+@app.route('/changePass', methods=['POST'])
 def changePass():
     email = session.get('email')
-    return render_template('changePass.html', email=email)
+    current_password = request.form['current_password']
+    new_password = request.form['new_password']
+
+    user = collectionUsers.find_one({'email': email})
+    if user and user['password'] == current_password:
+        collectionUsers.update_one({'_id': ObjectId(user['_id'])}, {'$set': {'password': new_password}})
+        flash('Contraseña cambiada con éxito')
+        return redirect('/welcome')
+    else:
+        flash('Contraseña actual incorrecta')
+        return redirect('/changePass')
+
 
 @app.route('/deleteUser')
 def deleteUser():

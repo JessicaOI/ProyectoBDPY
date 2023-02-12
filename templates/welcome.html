@@ -19,15 +19,21 @@
     <div id="myModal" class="modal">
         <div class="modal-content">
           <span class="close" onclick="closeModal()">&times;</span>
-          <h1>Cambio de Contraseña</h1>
-          <form action="submit_password.php" method="post">
-            <label for="current_password">Contraseña Actual:</label>
-            <input type="password" id="current_password" placeholder="Current Password" name="current_password"><br><br>
-            <label for="new_password">Nueva Contraseña:</label>
-            <input type="password" id="new_password" name="new_password"><br>
+          <h1>Cambio de Contraseña</h1><br>
+          <form action="/changePass" method="post">
+            <div style="display: inline-block; margin-right: 10px;">
+              <label for="current_password">Contraseña Actual:</label>
+              <input type="password" id="current_password" name="current_password">
+            </div>
+            <div style="display: inline-block;">
+              <label for="new_password">Nueva Contraseña:</label>
+              <input type="password" id="new_password" name="new_password">
+              <button type="submit">Save</button>
+            </div>
           </form>
         </div>
       </div>
+      
       <script type="text/javascript" src="{{ url_for('static', filename='js/changepass.js') }}"></script>
       
     <!-- NAV -->
