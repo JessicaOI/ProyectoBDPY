@@ -188,11 +188,6 @@ def Chats():
     # Renderizar la plantilla con la información de las salas de chat
     return render_template('chats.html', room_info=room_info)
 
-
-
-
-
-
 @app.route('/logout')
 def logout():
     session.pop('email', None)

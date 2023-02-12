@@ -1,6 +1,9 @@
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/proyecciones.css') }}">
+
 <h2>Proyecciones de mujeres:</h2>
 <p>Mostrando {{ count_f }} personas:</p>
-<table>
+<table class="facebook-table">
     <tr>
         <th>Nombre</th>
         <th>Género</th>
@@ -21,7 +24,7 @@
 
 <h2>Proyecciones de hombres:</h2>
 <p>Mostrando {{ count_m }} personas:</p>
-<table>
+<table class="facebook-table">
     <tr>
         <th>Nombre</th>
         <th>Género</th>
