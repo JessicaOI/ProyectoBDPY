@@ -24,6 +24,7 @@ def login():
             return redirect('/welcome')
     return render_template('signupLogin.html')
 
+#registro
 @app.route('/', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
@@ -31,12 +32,13 @@ def signup():
         last_name = request.form['last_name']
         email = request.form['email']
         password = request.form['password']
+        country = request.form['country']
         gender = request.form.get("gender")
         
         if not gender:
             return "You must select a gender option."
         
-        collectionUsers.insert_one({'name': name, 'last_name': last_name,'email': email, 'password': password, 'gender': gender,})
+        collectionUsers.insert_one({'name': name, 'last_name': last_name,'email': email, 'password': password, 'country': country, 'gender': gender})
         session['email'] = email
         return redirect('/welcome')
     return render_template('signupLogin.html')
@@ -238,6 +240,10 @@ def deleteUser():
     collectionUsers.delete_one({"email": email})
     session.pop('email', None)
     return redirect('/')
+
+@app.route('/charts', methods=['GET', 'POST'])
+def charts():
+    return render_template('chartshtml.html')
 
 
 if __name__ == '__main__':
