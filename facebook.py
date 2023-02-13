@@ -31,18 +31,31 @@ def signup():
         name = request.form['name']
         last_name = request.form['last_name']
         email = request.form['email']
+        email2 = request.form['email2']
         password = request.form['password']
         country = request.form['country']
         gender = request.form.get("gender")
         
+        # Define la estructura del nuevo subdocumento
+        sub_document = {
+            "prymary": email,
+            "secundary": email2
+        }
+        main_document = {
+            'name': name,
+            'last_name': last_name,
+            "email": sub_document,
+            'password': password,
+            'country': country,
+            'gender': gender
+        }
         if not gender:
             return "You must select a gender option."
         
-        collectionUsers.insert_one({'name': name, 'last_name': last_name,'email': email, 'password': password, 'country': country, 'gender': gender})
+        collectionUsers.insert_one(main_document)
         session['email'] = email
         return redirect('/welcome')
     return render_template('signupLogin.html')
-
 
 @app.route('/welcome', methods=['GET', 'POST'])
 def welcome():
