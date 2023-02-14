@@ -1,0 +1,65 @@
+[
+  {
+    "_id": { "$oid": "60cc4d4ebf7bb364ec4ab832" },
+    "name": "John",
+    "last_name": "Doe",
+    "email": "johndoe@example.com",
+    "password": "secret",
+    "gender": "Male",
+    "friends": [ { "$oid": "60cc4d4ebf7bb364ec4ab834" } ]
+  },
+  {
+    "_id": { "$oid": "60cc4d4ebf7bb364ec4ab833" },
+    "name": "Jane",
+    "last_name": "Doe",
+    "email": "janedoe@example.com",
+    "password": "password",
+    "gender": "Female",
+    "friends": [ { "$oid": "60cc4d4ebf7bb364ec4ab832" } ]
+  },
+  {
+    "_id": { "$oid": "60cc4d4ebf7bb364ec4ab834" },
+    "name": "Mike",
+    "last_name": "Smith",
+    "email": "mikesmith@example.com",
+    "password": "123456",
+    "gender": "Male",
+    "friends": [ { "$oid": "60cc4d4ebf7bb364ec4ab832" } ]
+  },
+  {
+    "_id": { "$oid": "60cc4d4ebf7bb364ec4ab835" },
+    "name": "Samantha",
+    "last_name": "Jones",
+    "email": "samanthajones@example.com",
+    "password": "password123",
+    "gender": "Female",
+    "friends": []
+  },
+  {
+    "_id": { "$oid": "60cc4d4ebf7bb364ec4ab836" },
+    "name": "David",
+    "last_name": "Lee",
+    "email": "davidlee@example.com",
+    "password": "qwerty",
+    "gender": "Male",
+    "friends": [ { "$oid": "60cc4d4ebf7bb364ec4ab837" }, { "$oid": "60cc4d4ebf7bb364ec4ab838" } ]
+  },
+  {
+    "_id": { "$oid": "60cc4d4ebf7bb364ec4ab837" },
+    "name": "Emily",
+    "last_name": "Wilson",
+    "email": "emilywilson@example.com",
+    "password": "pa$$word",
+    "gender": "Female",
+    "friends": [ { "$oid": "60cc4d4ebf7bb364ec4ab836" } ]
+  },
+  {
+    "_id": { "$oid": "60cc4d4ebf7bb364ec4ab838" },
+    "name": "Tom",
+    "last_name": "Johnson",
+    "email": "tomjohnson@example.com",
+    "password": "abc123",
+    "gender": "Male",
+    "friends": [ { "$oid": "60cc4d4ebf7bb364ec4ab836" } ]
+  }
+]
