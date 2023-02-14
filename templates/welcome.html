@@ -19,15 +19,21 @@
     <div id="myModal" class="modal">
         <div class="modal-content">
           <span class="close" onclick="closeModal()">&times;</span>
-          <h1>Cambio de Contraseña</h1>
-          <form action="submit_password.php" method="post">
-            <label for="current_password">Contraseña Actual:</label>
-            <input type="password" id="current_password" placeholder="Current Password" name="current_password"><br><br>
-            <label for="new_password">Nueva Contraseña:</label>
-            <input type="password" id="new_password" name="new_password"><br>
+          <h1>Cambio de Contraseña</h1><br>
+          <form action="/changePass" method="post">
+            <div style="display: inline-block; margin-right: 10px;">
+              <label for="current_password">Contraseña Actual:</label>
+              <input type="password" id="current_password" name="current_password">
+            </div>
+            <div style="display: inline-block;">
+              <label for="new_password">Nueva Contraseña:</label>
+              <input type="password" id="new_password" name="new_password">
+              <button type="submit">Save</button>
+            </div>
           </form>
         </div>
       </div>
+      
       <script type="text/javascript" src="{{ url_for('static', filename='js/changepass.js') }}"></script>
       
     <!-- NAV -->
@@ -90,7 +96,7 @@
             <li class="h-full hidden xl:flex">
                 <a href="#" class="inline-flex items-center justify-center p-1 rounded-full hover:bg-gray-200 dark:hover:bg-dark-third mx-1">
                     <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Profile picture" class="rounded-full h-7 w-7">
-                    <span class="mx-2 font-semibold dark:text-dark-txt">{{ email }}</span>
+                    <span class="mx-2 font-semibold dark:text-dark-txt">{{ usuario }}</span>
                 </a>
             </li>
             <li>
@@ -127,8 +133,8 @@
                 <li>
                     <a href="#" class="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded-lg transition-all dark:text-dark-txt dark:hover:bg-dark-third">
                         <img src="{{ url_for('static', filename='images/perfil.png') }}" alt="Profile picture" class="w-10 h-10 rounded-full">
-                        <!-- aqui llamo el email logueado -->
-                        <span class="font-semibold">{{ email }}</span>
+                        <!-- aqui llamo el usuario logueado -->
+                        <span class="font-semibold">{{ usuario }}</span>
                     </a>
                 </li>
                 <li>
@@ -339,11 +345,12 @@
             <!-- ROOM -->
             <div class="p-4 mt-4 shadow rounded-lg bg-white dark:bg-dark-second overflow-hidden">
                 <div class="flex space-x-4 relative">
+                    <i class='bx bxs-video-plus text-2xl text-purple-500'></i>
                     <form action="/Room" method="POST">
-                        <div class="w-1/2 lg:w-3/12 flex space-x-2 items-center justify-center border-2 border-blue-200 dark:border-blue-700 rounded-full cursor-pointer">
-                            <i class='bx bxs-video-plus text-2xl text-purple-500'></i>
+                        <!-- <div class="w-1/2 lg:w-3/12 flex space-x-2 items-center justify-center border-2 border-blue-200 dark:border-blue-700 rounded-full cursor-pointer"> -->
+                            
                             <button type="submit" class="text-sm font-semibold text-blue-500">Create Room</button>
-                        </div>
+                        <!-- </div> -->
                     </form>
                     <div class="relative cursor-pointer">
                         <img src="{{ url_for('static', filename='./images/avt-3.jpg') }}"alt="Profile picture" class="rounded-full">

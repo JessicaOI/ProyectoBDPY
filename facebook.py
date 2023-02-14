@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
-client = MongoClient("mongodb://localhost:27017/")
+client = MongoClient("mongodb+srv://proyecto:btstustatas@cluster0.xunnbo9.mongodb.net/test")
 db = client["proyecto1"]
 collectionUsers = db["users"]
 collectionPosts = db["Posts"]
@@ -215,10 +215,21 @@ def logout():
     session.pop('email', None)
     return redirect('/')
 
-@app.route('/changePass')
+@app.route('/changePass', methods=['POST'])
 def changePass():
     email = session.get('email')
-    return render_template('changePass.html', email=email)
+    current_password = request.form['current_password']
+    new_password = request.form['new_password']
+
+    user = collectionUsers.find_one({'email': email})
+    if user and user['password'] == current_password:
+        collectionUsers.update_one({'_id': ObjectId(user['_id'])}, {'$set': {'password': new_password}})
+        flash('Contraseña cambiada con éxito')
+        return redirect('/welcome')
+    else:
+        flash('Contraseña actual incorrecta')
+        return redirect('/changePass')
+
 
 @app.route('/deleteUser')
 def deleteUser():

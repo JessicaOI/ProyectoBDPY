@@ -30,6 +30,11 @@
     padding: 5px;
   }
   
+  button{
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px;
+  }
 
   /* Estilo del botón que abre el modal */
   .open-button {
