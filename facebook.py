@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
-client = MongoClient("mongodb://localhost:27017/")
+client = MongoClient("mongodb+srv://proyecto:btstustatas@cluster0.xunnbo9.mongodb.net/test")
 db = client["proyecto1"]
 collectionUsers = db["users"]
 collectionPosts = db["Posts"]
@@ -24,23 +24,38 @@ def login():
             return redirect('/welcome')
     return render_template('signupLogin.html')
 
+#registro
 @app.route('/', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
         name = request.form['name']
         last_name = request.form['last_name']
         email = request.form['email']
+        email2 = request.form['email2']
         password = request.form['password']
+        country = request.form['country']
         gender = request.form.get("gender")
         
+        # Define la estructura del nuevo subdocumento
+        sub_document = {
+            "prymary": email,
+            "secundary": email2
+        }
+        main_document = {
+            'name': name,
+            'last_name': last_name,
+            "email": sub_document,
+            'password': password,
+            'country': country,
+            'gender': gender
+        }
         if not gender:
             return "You must select a gender option."
         
-        collectionUsers.insert_one({'name': name, 'last_name': last_name,'email': email, 'password': password, 'gender': gender,})
+        collectionUsers.insert_one(main_document)
         session['email'] = email
         return redirect('/welcome')
     return render_template('signupLogin.html')
-
 
 @app.route('/welcome', methods=['GET', 'POST'])
 def welcome():
@@ -215,10 +230,21 @@ def logout():
     session.pop('email', None)
     return redirect('/')
 
-@app.route('/changePass')
+@app.route('/changePass', methods=['POST'])
 def changePass():
     email = session.get('email')
-    return render_template('changePass.html', email=email)
+    current_password = request.form['current_password']
+    new_password = request.form['new_password']
+
+    user = collectionUsers.find_one({'email': email})
+    if user and user['password'] == current_password:
+        collectionUsers.update_one({'_id': ObjectId(user['_id'])}, {'$set': {'password': new_password}})
+        flash('Contraseña cambiada con éxito')
+        return redirect('/welcome')
+    else:
+        flash('Contraseña actual incorrecta')
+        return redirect('/changePass')
+
 
 @app.route('/deleteUser')
 def deleteUser():
@@ -227,6 +253,10 @@ def deleteUser():
     collectionUsers.delete_one({"email": email})
     session.pop('email', None)
     return redirect('/')
+
+@app.route('/charts', methods=['GET', 'POST'])
+def charts():
+    return render_template('chartshtml.html')
 
 
 if __name__ == '__main__':
