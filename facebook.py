@@ -17,10 +17,11 @@ def login():
     if request.method == 'POST':
         email = request.form['emailLogin']
         password = request.form['passwordLogin']
-        print(email,password)
-        user = collectionUsers.find_one({'email': email})
+        
+        user = collectionUsers.find_one({'email.prymary': email})
         if user and user['password'] == password:
-            session['email'] = email
+            session['email.prymary'] = email
+            print(email,password)
             return redirect('/welcome')
     return render_template('signupLogin.html')
 
@@ -53,13 +54,13 @@ def signup():
             return "You must select a gender option."
         
         collectionUsers.insert_one(main_document)
-        session['email'] = email
+        session['email.prymary'] = email
         return redirect('/welcome')
     return render_template('signupLogin.html')
 
 @app.route('/welcome', methods=['GET', 'POST'])
 def welcome():
-    email = session.get('email')
+    email = session.get('email.prymary')
     if request.method == "POST":
         if "like_post" in request.form:
             post_id = request.form["like_post"]
@@ -136,12 +137,12 @@ def proyecciones():
 
 @app.route('/Room', methods=['GET', 'POST'])
 def Room():
-    email = session.get('email')
+    email = session.get('email.prymary')
     
     # Obtener la instancia de la colección de usuarios
     collection = collectionUsers
     
-    user_doc = collection.find_one({"email": email})
+    user_doc = collection.find_one({"email.prymary": email})
     friend_ids = user_doc.get("friends", [])
     friends = []
     
@@ -182,13 +183,13 @@ def Room():
 @app.route('/Chats', methods=['GET', 'POST'])
 def Chats():
     # Obtener el correo electrónico del usuario actual
-    email = session.get('email')
+    email = session.get('email.prymary')
 
     # Obtener la instancia de la colección de usuarios
     collection = collectionUsers
 
     # Obtener el documento del usuario actual
-    user_doc = collection.find_one({"email": email})
+    user_doc = collection.find_one({"email.prymary": email})
 
     # Obtener la instancia de la colección de salas de chat
     room_collection = collectionRooms
@@ -227,16 +228,16 @@ def Chats():
 
 @app.route('/logout')
 def logout():
-    session.pop('email', None)
+    session.pop('email.prymary', None)
     return redirect('/')
 
 @app.route('/changePass', methods=['POST'])
 def changePass():
-    email = session.get('email')
+    email = session.get('email.prymary')
     current_password = request.form['current_password']
     new_password = request.form['new_password']
 
-    user = collectionUsers.find_one({'email': email})
+    user = collectionUsers.find_one({'email.prymary': email})
     if user and user['password'] == current_password:
         collectionUsers.update_one({'_id': ObjectId(user['_id'])}, {'$set': {'password': new_password}})
         flash('Contraseña cambiada con éxito')
@@ -248,10 +249,10 @@ def changePass():
 
 @app.route('/deleteUser')
 def deleteUser():
-    email = session.get('email')
+    email = session.get('email.prymary')
      # Eliminar el documento correspondiente al correo electrónico especificado
     collectionUsers.delete_one({"email": email})
-    session.pop('email', None)
+    session.pop('email.prymary', None)
     return redirect('/')
 
 @app.route('/charts', methods=['GET', 'POST'])
